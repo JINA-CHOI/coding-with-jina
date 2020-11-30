@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poor+Story&display=swap" rel="stylesheet">
+    <title> 5의 배수 찾기 </title>
+    <style>
+        body{
+            text-align: center;
+            font-family: 'Poor Story', cursive;
+
+            /*적용하고자 하는 부모 엘리먼트에 적용*/
+            display: flex;
+            
+            /*요소들을 가운데 정렬(세로)*/
+            align-items: center;
+            
+            /*요소들을 가운데 정렬(가로)*/
+            justify-content: center;
+            
+            /* 요소들을 위에서 아래로 정렬 */
+            flex-direction: column;
+
+            background-color:#fff17671;
+            
+        }
+        #input{
+            margin: 30px;
+        }
+        h1{
+            text-align: center;
+        }
+        #resultArea{
+            width: 1000px;
+            height: 200px;
+            text-align: center;
+            margin: 30px;
+        }
+        #result{
+            width: 1000px;
+            height: 100px;
+            text-align: center;
+        }
+        #inputArea{
+            text-align: center;
+        }
+        img{
+            width: 100px;
+            height: 100px;
+        }
+
+        .btn{
+            text-align: center;
+            font-family: 'Poor Story', cursive;
+            font-size: 20px;
+            font-weight: bold;
+            background-color:#fff176;
+            width: 80px;
+            height: 40px;
+            margin: 10px;
+            border-radius: 20px;
+            border:0px solid;
+            box-shadow: 2px 2px 2px 2px #ffda76;
+        }
+    </style>
+</head>
+<body>
+    <!--숫자를 입력받는 부분-->
+    <div id="inputArea">
+        <h1> 1~100의 수에서 5의 배수를 맞춰보세요.</h1>
+        <input type="text" id="input" placeholder="숫자를 입력해보세요."><br>
+        <input class="btn" type="submit" onclick="input()" value="확인">
+        <input class="btn" type="submit" onclick="reset()" value="reset"">
+    </div>
+    <br>
+    <img src="img/pngegg.png">
+    <!-- 결과값을 받는 부분 -->
+    <div id="resultArea">
+        <h1>결과는?!</h1>
+        <br>
+        <div id="result"></div>
+    </div>
+
+    <script>
+    var resultArea = document.querySelector("#result"); 
+    function input(){
+        var num = document.querySelector("#input").value;
+        console.log(num);
+        if(num === null || num === ""){
+            //reset(); 을 꼭 앞쪽으로 놓아야 input안의 입력값은 지워지고 결과값이 남음
+            reset();
+            resultArea.innerHTML="<h1>숫자를 입력해주세요.</h1>.";
+        }else if(num == 0  || num>=101){
+            reset();
+            resultArea.innerHTML="<h1>1~100사이의 숫자를 입력해주세요.</h1>.";
+        }else if(num<=100){
+            if(num%5===0){
+                reset();
+                resultArea.innerHTML="<h1>"+num.fontcolor("blue")+"은(는) 5의 배수가 <font color='blue'>맞습니다.</font></h1>";
+            }else {
+                reset();
+                resultArea.innerHTML="<h1>"+num.fontcolor("red")+"은(는) 5의 배수가 <font color='red'>아닙니다.</font></h1>";
+            }
+        }
+        
+    }
+
+    function reset(){
+        document.querySelector("#input").value = "";
+        resultArea.innerHTML="";
+    }
+    </script>
+</body>
+</html>
