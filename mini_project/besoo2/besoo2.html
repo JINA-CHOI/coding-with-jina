@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poor+Story&display=swap" rel="stylesheet">
+    <title> 너의 배수는? </title>
+    <style>
+        body{
+            text-align: center;
+            font-family: 'Poor Story', cursive;
+
+            /*적용하고자 하는 부모 엘리먼트에 적용*/
+            display: flex;
+            
+            /*요소들을 가운데 정렬(세로)*/
+            align-items: center;
+            
+            /*요소들을 가운데 정렬(가로)*/
+            justify-content: center;
+            
+            /* 요소들을 위에서 아래로 정렬 */
+            flex-direction: column;
+
+            background-color:#fff17671;
+            
+        }
+        #input_n,#input_k{
+            width: 40px;
+            height: 40px;
+        }
+        h1{
+            text-align: center;
+        }
+        #resultArea{
+            width: 1000px;
+            height: 200px;
+            text-align: center;
+            margin: 30px;
+        }
+        #result{
+            width: 1000px;
+            height: 100px;
+            text-align: center;
+        }
+        #inputArea{
+            text-align: center;
+        }
+        img{
+            width: 100px;
+            height: 100px;
+        }
+
+        .btn{
+            text-align: center;
+            font-family: 'Poor Story', cursive;
+            font-size: 20px;
+            font-weight: bold;
+            background-color:#fff176;
+            width: 80px;
+            height: 40px;
+            margin: 10px;
+            border-radius: 20px;
+            border:0px solid;
+            box-shadow: 2px 2px 2px 2px #ffda76;
+        }
+    </style>
+</head>
+<body>
+    <!--숫자를 입력받는 부분-->
+    <div id="inputArea">
+        <h1>1~100사이의 수 중에서 N의 배수를 맞춰보세요.</h1>
+        <h1> 
+            <input type="text" id="input_k" placeholder="1~100사이">은(는) &nbsp
+        <input type="text" id="input_n" placeholder="n의 배수">의 배수가 맞을까요?
+        </h1>
+        <input class="btn" type="submit" onclick="input()" value="확인">
+        <input class="btn" type="submit" onclick="reset()" value="reset"">
+    </div>
+    <br>
+    <img src="img/pngegg.png">
+    <!-- 결과값을 받는 부분 -->
+    <div id="resultArea">
+        <h1>결과는?!</h1>
+        <br>
+        <div id="result"></div>
+    </div>
+
+    <script>
+    var resultArea = document.querySelector("#result"); 
+    function input(){
+        // n : 배수
+        var n = document.querySelector("#input_n").value;
+        
+        // k : n의 배수인지 아닌지 알고자 하는 수
+        var k = document.querySelector("#input_k").value;
+        console.log(n);
+        console.log(k);
+       
+        if(k === null || k === ""|| n===null || n===""){
+            resultArea.innerHTML="<h1>두 빈칸의 숫자를 모두 입력해주세요.</h1>.";
+        }else if(k == 0  || k>=101 || n == 0){
+            reset2();
+            resultArea.innerHTML="<h1>1~100사이의 숫자를 입력해주세요.</h1>.";
+        }else if(k<=100){
+            if(k%n===0){
+                 //reset(); 을 꼭 앞쪽으로 놓아야 input안의 입력값은 지워지고 결과값이 남음
+                reset2();
+                resultArea.innerHTML="<h1>"+k.fontcolor("blue")+"은(는) "
+                +n.fontcolor("blue")+"의 배수가 <font color='blue'>맞습니다.</font></h1>";
+            }else {
+                reset2();
+                resultArea.innerHTML="<h1>"+k.fontcolor("red")+"은(는)  "
+                +n.fontcolor("red")+"의 배수가 <font color='red'>아닙니다.</font></h1>";
+            }
+        }
+        
+    }
+
+    // k의 빈칸만 삭제하는 기능
+    function reset(){
+        document.querySelector("#input_k").value = "";
+        resultArea.innerHTML="";
+    }
+
+    // 모든 빈칸삭제하는 기능
+    function reset2(){
+        document.querySelector("#input_k").value = "";
+        document.querySelector("#input_n").value = "";
+        resultArea.innerHTML="";
+    }
+    </script>
+</body>
+</html>
