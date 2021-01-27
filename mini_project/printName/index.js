@@ -58,6 +58,7 @@ function loadName(){
     }
 }
 
+//맨처음 실행되는 함수
 function init(){
     loadName();
 }

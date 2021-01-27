@@ -4,7 +4,7 @@
   display: none;
 }
 
-/* .showing을 클래스에 추가하면 숨겨놓은 것들이 보임 */
+/* .showing을 클래스에 추가하면 숨겨놓은 것들이 보임  */
 .showing {
   display: block;
 }
